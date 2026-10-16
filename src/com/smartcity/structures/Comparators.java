@@ -1,16 +1,17 @@
 package com.smartcity.structures;
 
 import java.util.Comparator;
+
 import com.smartcity.model.Place;
 
 /**
  * Comparators for Place objects, supporting multiple sort orders.
- * 
+ *
  * Time Complexity:
  *   - Creating comparator: O(1)
  *   - Using with Collections.sort(list, comparator): O(n log n)
  * Space Complexity: O(1) for comparator instance
- * 
+ *
  * Related Learning: LeetCode 1356 "Sort Integers by The Number of 1 Bits"
  */
 public class Comparators {
@@ -23,7 +24,7 @@ public class Comparators {
             Comparator.nullsLast(String.CASE_INSENSITIVE_ORDER)
         );
     }
-    
+
     /**
      * Returns a comparator that sorts places by category (alphabetical),
      * then by name as a tie-breaker.

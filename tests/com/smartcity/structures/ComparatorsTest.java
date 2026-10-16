@@ -1,10 +1,12 @@
 package com.smartcity.structures;
 
-import com.smartcity.model.Place;
-import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import com.smartcity.model.Place;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ComparatorsTest {
@@ -45,7 +47,7 @@ public class ComparatorsTest {
         assertEquals(2, places.get(0).getId());
         assertEquals(1, places.get(1).getId());
         assertEquals(0, places.get(2).getId());
-        assertEquals(3, places.get(3).getId());        
+        assertEquals(3, places.get(3).getId());
     }
 
     @Test
@@ -62,6 +64,23 @@ public class ComparatorsTest {
         Collections.sort(places, Comparators.byName());
         assertEquals(1, places.get(0).getId());
         assertEquals(2, places.get(1).getId());
+        assertEquals(0, places.get(2).getId());
+    }
+
+    @Test
+    public void testSortByCategoryWithNullLast() {
+        Place a = new Place(0, "Zoo", null, "A", "");
+        Place b = new Place(1, "Apple Park", "Park", "B", "");
+        Place c = new Place(2, "Media", "Culture", "C", "");
+
+        List<Place> places = new ArrayList<>();
+        places.add(a);
+        places.add(b);
+        places.add(c);
+
+        Collections.sort(places, Comparators.byCategory());
+        assertEquals(2, places.get(0).getId());
+        assertEquals(1, places.get(1).getId());
         assertEquals(0, places.get(2).getId());
     }
 }
